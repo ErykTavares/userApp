@@ -1,28 +1,17 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import styles from './style';
 
-const Header: React.FC = () => {
+interface IHeaderProps {
+	title: string;
+}
+
+const Header: React.FC<IHeaderProps> = ({ title }) => {
 	return (
 		<View style={styles.header}>
-			<Text style={styles.title}>header here!</Text>
+			<Text style={styles.title}>{title}</Text>
 		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	header: {
-		width: '100%',
-		height: '100px',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		backgroundColor: '#121212',
-	},
-
-	title: {
-		fontSize: 32,
-		color: 'white',
-	},
-});
 
 export default Header;

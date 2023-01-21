@@ -5,9 +5,9 @@
  * @format
  */
 
+import Header from '@components/header';
 import React from 'react';
 import { useColorScheme, View } from 'react-native';
-import Header from './src/components/header';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 function App(): JSX.Element {
@@ -19,7 +19,7 @@ function App(): JSX.Element {
 
 	return (
 		<View style={backgroundStyle}>
-			<Header />
+			<Header title="People List" />
 		</View>
 	);
 }
