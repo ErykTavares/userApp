@@ -48,7 +48,12 @@
 	},
 	"settings": {
 		"import/resolver": {
-			"typescript": {}
+			"typescript": {},
+			"babel-module": {
+				"alias": {
+					"@components": "userApp/src/components"
+				}
+			}
 		}
 	},
 	"plugins": ["react", "react-native", "@typescript-eslint"],

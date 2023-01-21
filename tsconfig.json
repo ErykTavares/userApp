@@ -1,4 +1,11 @@
 {
 	"extends": "@tsconfig/react-native/tsconfig.json",
-	"include": ["src", "babel.config.js"]
+	"include": [".", "src"],
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@components/*": ["./src/components/*"],
+			"@/*": ["./src/*"]
+		}
+	}
 }
