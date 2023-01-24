@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import styles from './style';
+import { HeaderStyle, TitleStyle } from './style';
 
 interface IHeaderProps {
 	title: string;
@@ -8,9 +7,9 @@ interface IHeaderProps {
 
 const Header: React.FC<IHeaderProps> = ({ title }) => {
 	return (
-		<View style={styles.header}>
-			<Text style={styles.title}>{title}</Text>
-		</View>
+		<HeaderStyle>
+			<TitleStyle>{title}</TitleStyle>
+		</HeaderStyle>
 	);
 };
 
