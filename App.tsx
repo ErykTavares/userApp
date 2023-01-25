@@ -7,12 +7,15 @@
 
 import Header from '@components/header';
 import axios from 'axios';
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useColorScheme, View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import AwesomeAlert from 'react-native-awesome-alerts';
+import PeopleList from '@components/peopleList';
 
 function App(): JSX.Element {
+	const [users, setUsers] = useState<DUser.IUser[]>([]);
+
 	const isDarkMode = useColorScheme() === 'dark';
 
 	const backgroundStyle = {
@@ -29,7 +32,7 @@ function App(): JSX.Element {
 			})
 			.then((res) => {
 				const { results } = res.data;
-				console.log(results.map((item: any) => item.name.first));
+				setUsers(results);
 			})
 			.catch((err) => {
 				<AwesomeAlert
@@ -52,6 +55,7 @@ function App(): JSX.Element {
 	return (
 		<View style={backgroundStyle}>
 			<Header title="People List" />
+			<View>{users ? <PeopleList usersList={users} /> : null}</View>
 		</View>
 	);
 }
