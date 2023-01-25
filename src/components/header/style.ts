@@ -1,5 +1,4 @@
-import styled from "styled-components/native";
-
+import styled from 'styled-components/native';
 
 export const HeaderStyle = styled.View`
 	width: 100%;
@@ -13,4 +12,5 @@ export const HeaderStyle = styled.View`
 export const TitleStyle = styled.Text`
 	font-size: 32px;
 	color: #ffff;
+	font-family: 'Poppins-SemiBold';
 `;
