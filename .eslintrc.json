@@ -7,8 +7,7 @@
 	"extends": [
 		"plugin:react/recommended",
 		"standard-with-typescript",
-		"prettier",
-		"airbnb-typescript"
+		"prettier"
 	],
 	"overrides": [
 		{
@@ -60,12 +59,13 @@
 	"rules": {
 		"quotes": "off",
 		"linebreak-style": "off",
-		"react/prop-types": "off",
 		"import/prefer-default-export": "off",
 		"arrow-body-style": "off",
 		"react/jsx-no-bind": "off",
 		"react/no-array-index-key": "off",
-		"no-console": "off",
+		"no-console": "warn",
+		"@typescript-eslint/no-floating-promises": "off",
+		"import/no-duplicates": "off",
 		"react/function-component-definition": [
 			2,
 			{

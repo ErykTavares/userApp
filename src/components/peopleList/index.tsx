@@ -1,17 +1,24 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { ListRenderItem, SafeAreaView, Text } from 'react-native';
+import { ListStyle } from './style';
 
 interface IPeopleListProps {
 	usersList?: DUser.IUser[];
 }
 
 const PeopleList: React.FC<IPeopleListProps> = ({ usersList }) => {
+	const handleRenderItem: ListRenderItem<DUser.IUser> = ({
+		item,
+	}): JSX.Element => <Text>{item?.name?.first}</Text>;
+
 	return (
-		<View>
-			{usersList?.map((item) => (
-				<Text key={item?.id?.value}>{item?.name?.first}</Text>
-			))}
-		</View>
+		<SafeAreaView>
+			<ListStyle<React.ElementType>
+				data={usersList}
+				renderItem={handleRenderItem}
+				keyExtractor={(_item: any, index: number) => index.toString()}
+			/>
+		</SafeAreaView>
 	);
 };
 

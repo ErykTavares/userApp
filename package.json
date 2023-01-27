@@ -13,7 +13,6 @@
     "axios": "^1.2.3",
     "react": "18.2.0",
     "react-native": "0.71.0",
-    "react-native-awesome-alerts": "^2.0.0",
     "react-native-typescript-transformer": "^1.2.13",
     "styled-components": "^5.3.6"
   },

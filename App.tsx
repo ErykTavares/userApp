@@ -10,10 +10,9 @@ import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useColorScheme, View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import AwesomeAlert from 'react-native-awesome-alerts';
 import PeopleList from '@components/peopleList';
 
-function App(): JSX.Element {
+const App = (): JSX.Element => {
 	const [users, setUsers] = useState<DUser.IUser[]>([]);
 
 	const isDarkMode = useColorScheme() === 'dark';
@@ -23,7 +22,7 @@ function App(): JSX.Element {
 	};
 
 	const userGet = useCallback(async (): Promise<void> => {
-		axios
+		await axios
 			.get('https://randomuser.me/api/', {
 				params: {
 					nat: 'us',
@@ -35,16 +34,7 @@ function App(): JSX.Element {
 				setUsers(results);
 			})
 			.catch((err) => {
-				<AwesomeAlert
-					showProgress={false}
-					title="Error"
-					message={
-						err?.response?.data?.message || 'Something went wrong'
-					}
-					closeOnTouchOutside={true}
-					closeOnHardwareBackPress={true}
-					showCancelButton={true}
-				/>;
+				console.log(err);
 			});
 	}, []);
 
@@ -55,9 +45,11 @@ function App(): JSX.Element {
 	return (
 		<View style={backgroundStyle}>
 			<Header title="People List" />
-			<View>{users ? <PeopleList usersList={users} /> : null}</View>
+			<View>
+				{users.length > 0 ? <PeopleList usersList={users} /> : null}
+			</View>
 		</View>
 	);
-}
+};
 
 export default App;
