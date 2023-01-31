@@ -1,6 +1,7 @@
 module.exports = {
 	presets: ['module:metro-react-native-babel-preset'],
 	plugins: [
+		'babel-plugin-styled-components',
 		[
 			'module-resolver',
 			{
@@ -15,6 +16,7 @@ module.exports = {
 				],
 				alias: {
 					'@components': './src/components',
+					'@shared': './src/shared',
 					'@': './src',
 				},
 			},

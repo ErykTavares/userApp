@@ -8,18 +8,16 @@
 import Header from '@components/header';
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
-import { useColorScheme, View } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { View } from 'react-native';
 import PeopleList from '@components/peopleList';
+import { ThemeProvider } from 'styled-components/native';
+import { darkTheme, lightTheme } from '@/assets/style/theme';
+import { MainStyle } from '@/assets/style/globalStyle';
 
 const App = (): JSX.Element => {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const [theme, setTheme] = useState('light');
 	const [users, setUsers] = useState<DUser.IUser[]>([]);
-
-	const isDarkMode = useColorScheme() === 'dark';
-
-	const backgroundStyle = {
-		backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-	};
 
 	const userGet = useCallback(async (): Promise<void> => {
 		await axios
@@ -43,12 +41,14 @@ const App = (): JSX.Element => {
 	}, []);
 
 	return (
-		<View style={backgroundStyle}>
-			<Header title="People List" />
-			<View>
-				{users.length > 0 ? <PeopleList usersList={users} /> : null}
-			</View>
-		</View>
+		<ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+			<MainStyle>
+				<Header title="People List" />
+				<View>
+					{users.length > 0 ? <PeopleList usersList={users} /> : null}
+				</View>
+			</MainStyle>
+		</ThemeProvider>
 	);
 };
 
